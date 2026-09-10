@@ -167,7 +167,7 @@
       backButton.setAttribute("aria-hidden", "false");
       backButton.tabIndex = 0;
     }
-    if (link.getAttribute("href") === "/downloads") {
+    if (link.getAttribute("href") === "/projetos/") {
       pageView.innerHTML = `
         <div class="download-page">
           <div class="download-list">
@@ -233,20 +233,28 @@
     });
   }
 
-  window.addEventListener("popstate", function () {
-    if (window.location.pathname === "/downloads") {
-      const downloadsLink = navLinks.find(
-        (link) => link.getAttribute("href") === "/downloads",
+  function isProjectsPath(pathname) {
+    return pathname === "/projetos" || pathname === "/projetos/";
+  }
+
+  function syncRoute() {
+    if (isProjectsPath(window.location.pathname)) {
+      const projectsLink = navLinks.find(
+        (link) => link.getAttribute("href") === "/projetos/",
       );
-      if (downloadsLink) {
-        showPage(downloadsLink, false);
+      if (projectsLink) {
+        showPage(projectsLink, false);
       }
     } else if (primaryNav.classList.contains("is-page-open")) {
       returnHome(false);
     } else {
       showHome(false);
     }
-  });
+  }
+
+  window.addEventListener("popstate", syncRoute);
+
+  syncRoute();
 
   const svgNamespace = "http://www.w3.org/2000/svg";
 

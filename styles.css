@@ -905,7 +905,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 1.25rem;
+  gap: 2.25rem;
 }
 
 .download-info {
