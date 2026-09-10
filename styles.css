@@ -778,12 +778,14 @@ button {
   top: 1.75rem;
   right: auto;
   bottom: auto;
-  left: 1.75rem;
+  left: 50%;
   z-index: 5;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  animation: page-nav-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  translate: -50% 0;
+  animation: page-nav-rise-centered 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .primary-nav.is-page-open.is-returning {
@@ -876,6 +878,8 @@ button {
   position: absolute;
   inset: 6.5rem 2rem 2rem;
   z-index: 1;
+  display: flex;
+  justify-content: center;
   overflow: auto;
   color: var(--neutral-color);
   opacity: 0;
@@ -896,13 +900,16 @@ button {
   max-width: 62rem;
   padding-top: 1rem;
   padding-bottom: 2rem;
+  text-align: center;
 }
 
 .project-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem 1.25rem;
-  margin-top: 1.5rem;
+  max-width: 52rem;
+  margin: 1.5rem auto 0;
+  text-align: left;
 }
 
 .project-form-field {
@@ -962,20 +969,25 @@ button {
 
 .download-page {
   width: 100%;
-  max-width: none;
+  max-width: 70rem;
   padding-top: 1rem;
+  text-align: center;
 }
 
 .download-list {
   display: grid;
+  justify-items: center;
   gap: 2.5rem;
 }
 
 .download-layout {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  width: 100%;
+  max-width: 62rem;
   gap: 2.25rem;
+  text-align: center;
 }
 
 .download-info {
@@ -1013,7 +1025,7 @@ button {
 
 @media (max-width: 600px) {
   .download-layout {
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
     gap: 0.75rem;
   }
@@ -1047,6 +1059,18 @@ button {
 }
 
 @keyframes page-nav-rise {
+  from {
+    opacity: 0;
+    transform: translateY(calc(100dvh - 8rem));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes page-nav-rise-centered {
   from {
     opacity: 0;
     transform: translateY(calc(100dvh - 8rem));
