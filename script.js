@@ -20,13 +20,13 @@
     root.dataset.theme = isDark ? "Dark" : "light";
 
     if (themeLabel) {
-      themeLabel.textContent = isDark ? "Dark" : "Light";
+      themeLabel.textContent = isDark ? "Escuro" : "Claro";
     }
 
     if (themeButton) {
       themeButton.setAttribute(
         "aria-label",
-        isDark ? "Current theme: Dark" : "Current theme: Light",
+        isDark ? "Tema atual: Escuro" : "Tema atual: Claro",
       );
       themeButton.setAttribute("aria-pressed", String(isDark));
     }

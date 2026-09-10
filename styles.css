@@ -550,8 +550,9 @@ button {
 .theme-switcher {
   position: absolute;
   z-index: auto;
+  right: 0;
   bottom: 0;
-  left: 0;
+  left: auto;
   display: flex;
   align-items: center;
   width: max-content;
