@@ -8,3 +8,6 @@ Thumbs.db
 
 .vercel
 .env*
+
+# Wrangler local state and caches are not project source files.
+.wrangler/

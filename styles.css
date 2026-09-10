@@ -688,12 +688,13 @@ button {
   right: auto;
   left: 0;
   bottom: 2.5rem;
-  z-index: auto;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 1rem;
   font-family: "Alfa Slab One", cursive;
+  pointer-events: auto;
 }
 
 .primary-nav a {
@@ -708,8 +709,11 @@ button {
 }
 
 .primary-nav .nav-link {
+  position: relative;
+  z-index: 11;
   margin-bottom: 0.2em;
   color: var(--neutral-color);
+  pointer-events: auto;
   font-size: clamp(2rem, 4dvw, 4rem);
   line-height: 1;
   text-decoration-color: var(--neutral-color);
