@@ -885,7 +885,7 @@ button {
   margin: 0;
   color: var(--neutral-color);
   font-family: "Alfa Slab One", cursive;
-  font-size: clamp(2rem, 5dvw, 4rem);
+  font-size: clamp(1.5rem, 3dvw, 2.75rem);
   font-weight: 400;
   line-height: 1;
 }
@@ -904,8 +904,8 @@ button {
 .download-layout {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
+  justify-content: flex-start;
+  gap: 1.25rem;
 }
 
 .download-info {
@@ -916,7 +916,7 @@ button {
   margin: 0;
   color: var(--neutral-color);
   font-family: "Alfa Slab One", cursive;
-  font-size: clamp(2rem, 5dvw, 4rem);
+  font-size: clamp(1.5rem, 3dvw, 2.75rem);
   font-weight: 400;
   line-height: 1;
 }
@@ -937,7 +937,7 @@ button {
   color: var(--neutral-color);
   font-family: "Fragment Mono", monospace;
   font-size: 0.95rem;
-  margin-right: clamp(5rem, 10vw, 7rem);
+  margin-right: 0;
   transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
 }
 
@@ -949,11 +949,11 @@ button {
   }
 
   .download-layout .page-view-title {
-    font-size: clamp(1.75rem, 9vw, 2.5rem);
+    font-size: clamp(1.5rem, 8vw, 2rem);
   }
 
   .download-item-title {
-    font-size: clamp(1.75rem, 9vw, 2.5rem);
+    font-size: clamp(1.5rem, 8vw, 2rem);
   }
 
   .download-button {
