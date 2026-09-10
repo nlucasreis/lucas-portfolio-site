@@ -815,29 +815,36 @@ button {
   display: none;
   align-items: center;
   justify-content: center;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: auto;
+  height: auto;
+  gap: 0.5rem;
   padding: 0;
-  border: 1px solid currentColor;
-  border-radius: 50%;
+  border: 0;
+  border-radius: 0;
   color: var(--neutral-color);
   cursor: pointer;
-  font-size: 0;
+  font-family: "Fragment Mono", monospace;
+  font-size: 1.25rem;
+  line-height: 1.2;
   opacity: 0;
   background: transparent;
   transition: color 0.25s ease, border-color 0.25s ease;
 }
 
 .page-back::before {
-  width: 0.4rem;
-  height: 0.4rem;
-  border-bottom: 1.5px solid currentColor;
-  border-left: 1.5px solid currentColor;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-bottom: 2px solid currentColor;
+  border-left: 2px solid currentColor;
   content: "";
-  transform: translateX(0.12rem) rotate(45deg);
+  transform: translateX(0.14rem) rotate(45deg);
 }
 
 .primary-nav.is-page-open .page-back {
+  position: fixed;
+  top: 1.5rem;
+  left: 2rem;
+  z-index: 12;
   display: inline-flex;
   animation: page-back-appear 0.35s 0.8s ease both;
 }
