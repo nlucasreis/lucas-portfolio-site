@@ -146,6 +146,58 @@
     }, 400);
   }
 
+  function bindProjectForm() {
+    const form = pageView.querySelector(".project-form");
+    const submitButton = form?.querySelector(".project-submit");
+    const status = form?.querySelector(".project-form-status");
+
+    if (!form || !submitButton || !status) {
+      return;
+    }
+
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+      status.textContent = "Enviando...";
+      status.className = "project-form-status";
+      submitButton.disabled = true;
+
+      const values = new FormData(form);
+      const payload = {
+        projectType: values.get("project-type"),
+        description: values.get("project-description"),
+        references: values.get("project-references"),
+        deadline: values.get("project-deadline"),
+        budget: values.get("project-budget"),
+        name: values.get("project-name"),
+        contact: values.get("project-contact"),
+      };
+
+      try {
+        const response = await fetch("/api/project-requests", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const result = await response.json().catch(function () {
+          return {};
+        });
+
+        if (!response.ok) {
+          throw new Error(result.error || "Não foi possível enviar a solicitação.");
+        }
+
+        form.reset();
+        status.textContent = "Solicitação enviada com sucesso.";
+        status.classList.add("is-success");
+      } catch (error) {
+        status.textContent = error.message || "Não foi possível enviar a solicitação.";
+        status.classList.add("is-error");
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  }
+
   function showPage(link, updateHistory) {
     if (!primaryNav || !intro || !pageView) {
       return;
@@ -234,10 +286,13 @@
               <label for="project-contact">Contato</label>
               <input id="project-contact" name="project-contact" type="text" placeholder="E-mail, WhatsApp ou outro canal" required />
             </div>
+            <button class="project-submit" type="submit">Enviar solicitação</button>
+            <p class="project-form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
       `;
       pageView.hidden = false;
+      bindProjectForm();
     } else {
       pageView.innerHTML = "";
       pageView.hidden = true;
