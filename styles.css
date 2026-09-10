@@ -751,19 +751,22 @@ button {
   transform: none;
 }
 
-/* Keep the remaining introduction copy available for later, but hidden for now. */
-.intro h1,
-.role-line,
-.description-line,
+/* The refined local layout keeps the full introduction visible on the home view. */
 .name-group .wave {
   display: none;
 }
 
 .name-line {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  margin: 0;
+  position: static;
+  margin: 0 0 1.5rem 2.5rem;
+}
+
+.intro.is-page-open h1,
+.intro.is-page-open .role-line,
+.intro.is-page-open .description-line {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.35s ease, visibility 0s linear 0.35s;
 }
 
 .intro.is-page-open .name-line {
