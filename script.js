@@ -205,7 +205,6 @@
     } else if (link.getAttribute("href") === "/solicitar-projeto/") {
       pageView.innerHTML = `
         <div class="request-page">
-          <h1 class="page-view-title">Solicitar Projeto</h1>
           <form class="project-form">
             <div class="project-form-field">
               <label for="project-type">Tipo de projeto</label>
@@ -227,7 +226,11 @@
               <label for="project-budget">Orçamento estimado</label>
               <input id="project-budget" name="project-budget" type="text" inputmode="decimal" placeholder="Ex.: R$ 5.000" />
             </div>
-            <div class="project-form-field project-form-field-wide">
+            <div class="project-form-field">
+              <label for="project-name">Nome</label>
+              <input id="project-name" name="project-name" type="text" placeholder="Seu nome" required />
+            </div>
+            <div class="project-form-field">
               <label for="project-contact">Contato</label>
               <input id="project-contact" name="project-contact" type="text" placeholder="E-mail, WhatsApp ou outro canal" required />
             </div>
