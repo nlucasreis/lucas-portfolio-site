@@ -176,7 +176,7 @@
                 <h1 class="page-view-title">MuOnline Season 6</h1>
                 <p class="download-page-copy">Instalador para Windows · 722 MB</p>
               </div>
-              <a class="download-button" href="/downloads/MU-Online-Season6-Setup.exe" download>
+              <a class="download-button" href="https://github.com/nlucasreis/lucas-portfolio-site/releases/download/v1.0.0/MU-Online-Season6-Setup.exe" download>
                 Baixar
               </a>
             </div>
@@ -185,7 +185,7 @@
                 <h2 class="download-item-title">LucasDownloader</h2>
                 <p class="download-page-copy">Video Downloader para Windows · 1.2.0</p>
               </div>
-              <a class="download-button" href="/downloads/LucasDownloader-Setup-1.2.0.exe" download>
+              <a class="download-button" href="https://github.com/nlucasreis/lucas-portfolio-site/releases/download/v1.0.0/LucasDownloader-Setup-1.2.0.exe" download>
                 Baixar
               </a>
             </div>
