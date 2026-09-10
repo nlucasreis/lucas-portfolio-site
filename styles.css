@@ -550,7 +550,7 @@ button {
 .theme-switcher {
   position: absolute;
   z-index: auto;
-  right: 0;
+  right: 1.25rem;
   bottom: 0;
   left: auto;
   display: flex;
@@ -844,8 +844,8 @@ button {
 
 .primary-nav.is-page-open .page-back {
   position: fixed;
-  top: 1.5rem;
-  left: 2rem;
+  top: 2.5rem;
+  left: 2.5rem;
   z-index: 12;
   display: inline-flex;
   animation: page-back-appear 0.35s 0.8s ease both;
