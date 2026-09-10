@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Get to know more about Yuri's experience, thoughts and past projects."
+    />
+    <title>Hello</title>
+
+    <script>
+      (() => {
+        try {
+          const savedTheme = localStorage.getItem("theme");
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: Dark)",
+          ).matches;
+          document.documentElement.dataset.theme =
+            savedTheme === null
+              ? prefersDark
+                ? "Dark"
+                : "light"
+              : savedTheme === "Dark"
+                ? "Dark"
+                : "light";
+        } catch {
+          document.documentElement.dataset.theme = "Dark";
+        }
+      })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Kanit:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <main class="frame">
+      <aside class="theme-control">
+        <button
+          class="theme-switcher"
+          type="button"
+          aria-label="Current theme: Dark"
+          aria-pressed="true"
+        >
+          <svg
+            class="theme-icon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M10 7a7 7 0 0 0 12 4.9v.1c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2h.1A6.979 6.979 0 0 0 10 7zm-6 5a8 8 0 0 0 15.062 3.762A9 9 0 0 1 8.238 4.938 7.999 7.999 0 0 0 4 12z"
+            />
+          </svg>
+          <span class="theme-label">Dark</span>
+        </button>
+      </aside>
+
+      <div class="stars-wrapper" aria-hidden="true">
+        <svg class="stars" width="100%" height="100%" preserveAspectRatio="none"></svg>
+        <svg class="stars" width="100%" height="100%" preserveAspectRatio="none"></svg>
+        <svg class="stars" width="100%" height="100%" preserveAspectRatio="none"></svg>
+        <svg class="extras" width="100%" height="100%" preserveAspectRatio="none">
+          <defs>
+            <radialGradient id="comet-gradient" cx="0" cy=".5" r=".5">
+              <stop offset="0%" stop-color="rgba(150, 150, 150, 0.8)" />
+              <stop offset="100%" stop-color="rgba(150, 150, 150, 0)" />
+            </radialGradient>
+          </defs>
+          <g transform="rotate(-135)">
+            <ellipse class="comet comet-a" fill="url(#comet-gradient)" cx="0" cy="0" rx="150" ry="2" />
+          </g>
+          <g transform="rotate(20)">
+            <ellipse class="comet comet-b" fill="url(#comet-gradient)" cx="100%" cy="0" rx="150" ry="2" />
+          </g>
+          <g transform="rotate(300)">
+            <ellipse class="comet comet-c" fill="url(#comet-gradient)" cx="40%" cy="100%" rx="150" ry="2" />
+          </g>
+        </svg>
+      </div>
+
+      <section class="intro" aria-labelledby="greeting">
+        <h1 id="greeting" class="slide-top" style="--dur: 0">Hello!</h1>
+
+        <p class="name-line slide-top" style="--dur: 0.5">
+          Hello, My name is <strong class="name-group"><a class="dotted-link" href="/me">Lucas</a>.<span class="wave" aria-hidden="true">&#128075;</span></strong>
+        </p>
+
+        <p class="role-line slide-top" style="--dur: 1">
+          Sky Afficionado, Gym Rat, Full Stack Developer;
+        </p>
+
+        <p class="description-line slide-top" style="--dur: 1.5">
+          Working as a Networking Engineer at <a class="dotted-link" href="https://nwt.net.br/">NWT Internet</a>, and <a class="dotted-link" href="/tools">coding</a>/<a class="dotted-link" href="/blog">blogging</a> on the side<svg
+            class="blink-cursor"
+            viewBox="0 0 4 8"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M0 0h4v1H2.5v6H4v1H0V7h1.5V1H0V0Z" />
+          </svg>
+        </p>
+      </section>
+
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <button class="page-back" type="button" aria-label="Voltar ao início" aria-hidden="true">‹</button>
+        <a class="nav-link slide-right" style="--dur: 1" href="/" title="Voltar ao início">Início</a>
+        <a class="nav-link slide-right" style="--dur: 1.5" href="/downloads" title="Acessar projetos">Projetos</a>
+      </nav>
+
+      <section class="page-view" aria-live="polite" hidden></section>
+
+      <!-- Legacy footer credit removed.
+          >❤️</a
+        >
+      -->
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

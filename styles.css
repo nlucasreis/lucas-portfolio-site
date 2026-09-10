@@ -1,0 +1,1170 @@
+:root {
+  --base-color: rgb(15 23 42);
+  --neutral-color: rgb(203 213 225);
+  --accent-color: rgb(126 34 206);
+  color-scheme: Dark;
+}
+
+:root[data-theme="light"] {
+  --base-color: rgb(203 213 225);
+  --neutral-color: rgb(15 23 42);
+  --accent-color: rgb(220 38 38);
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100dvh;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--base-color);
+  color: var(--neutral-color);
+  font-family: "Fragment Mono", ui-monospace, SFMono-Regular, Consolas,
+    monospace;
+  transition:
+    background-color 0.8s ease-in-out,
+    color 0.9s ease-in-out;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.frame {
+  position: relative;
+  width: calc(100dvw - 3rem);
+  min-height: calc(100dvh - 3rem);
+  margin: 1.5rem;
+  padding: 1rem;
+  border: 2px solid var(--accent-color);
+  border-radius: 1rem;
+  isolation: isolate;
+  transition: border-color 0.6s ease-in-out;
+}
+
+.stars-wrapper {
+  position: absolute;
+  z-index: -1;
+  top: -2.625rem;
+  left: -2.625rem;
+  width: calc(100dvw - 0.5rem);
+  height: calc(100dvh - 0.5rem);
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--base-color);
+  transition: background-color 0.8s ease-in-out;
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+.stars:nth-child(2) {
+  animation-delay: -1.32s;
+}
+
+.stars:nth-child(3) {
+  animation-delay: -2.64s;
+}
+
+.star {
+  position: absolute;
+  display: block;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: var(--neutral-color);
+  opacity: 0.95;
+  transition: background-color 0.9s ease-in-out;
+}
+
+.star:nth-child(3n) {
+  opacity: 0.8;
+}
+
+.star:nth-child(7n) {
+  opacity: 0.6;
+}
+
+.star:nth-child(13n) {
+  opacity: 0.4;
+}
+
+.star:nth-child(19n) {
+  opacity: 0.2;
+}
+
+.theme-switcher {
+  position: absolute;
+  z-index: 10;
+  bottom: -1.5em;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  height: 1.25em;
+  padding: 0;
+  border: 0;
+  color: var(--neutral-color);
+  cursor: pointer;
+  transform: none;
+  transform-origin: center;
+  background: transparent;
+  font-size: 1.25rem;
+  line-height: 1;
+  animation: fade-in 0.5s ease both;
+  transition: color 0.9s ease-in-out;
+}
+
+.theme-switcher:hover,
+.theme-switcher:focus-visible {
+  color: var(--accent-color);
+}
+
+.theme-switcher:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.theme-icon {
+  flex: 0 0 auto;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.25em;
+  fill: currentColor;
+  transition: fill 0.9s ease-in-out;
+}
+
+.intro {
+  position: relative;
+  z-index: 1;
+  max-width: 62rem;
+}
+
+.intro h1 {
+  display: inline-block;
+  margin: 1.5rem;
+  font-size: 2.25rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.intro p {
+  overflow-wrap: break-word;
+}
+
+.name-line {
+  margin: 0 0 1.5rem 2.5rem;
+  font-size: 1.5rem;
+  line-height: 1.35;
+}
+
+.role-line,
+.description-line {
+  margin: 0 0 0 4rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.description-line {
+  max-width: 62rem;
+}
+
+.dotted-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: underline dotted var(--neutral-color) 0.1em;
+  text-underline-offset: 0.2em;
+  transition:
+    color 0.6s ease-in-out,
+    text-underline-offset 0.6s ease,
+    text-decoration-color 0.6s ease;
+}
+
+.dotted-link:hover,
+.dotted-link:focus-visible {
+  color: var(--accent-color);
+  text-decoration-color: var(--accent-color);
+  text-underline-offset: 0.3em;
+}
+
+.dotted-link:focus-visible,
+.primary-nav a:focus-visible,
+.frame-footer a:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 4px;
+}
+
+.name-group {
+  position: relative;
+}
+
+.wave {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 0.2em);
+  display: inline-block;
+  visibility: hidden;
+  white-space: nowrap;
+  transform: translateY(-0.1em);
+}
+
+.name-group:hover .wave,
+.name-group:focus-within .wave {
+  visibility: visible;
+  animation: waving 0.3s linear infinite alternate;
+}
+
+.blink-cursor {
+  position: relative;
+  top: 0.2em;
+  display: inline-block;
+  width: 0.5em;
+  height: 1.25rem;
+  fill: var(--neutral-color);
+  animation: blinking 1.5s step-end infinite;
+  transition: fill 0.9s ease-in-out;
+}
+
+.primary-nav {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: "Alfa Slab One", Georgia, serif;
+}
+
+.primary-nav a {
+  margin-bottom: 0.2em;
+  color: var(--neutral-color);
+  font-size: clamp(2rem, 4dvw, 4rem);
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: underline solid var(--neutral-color) 0.1em;
+  text-underline-offset: 0.1em;
+  transition:
+    color 0.5s ease-in-out,
+    text-underline-offset 0.6s ease,
+    text-decoration-thickness 0.6s ease,
+    transform 0.3s ease;
+}
+
+.primary-nav a:hover,
+.primary-nav a:focus-visible {
+  color: var(--accent-color);
+  text-decoration-thickness: 0.3em;
+  text-underline-offset: -0.2em;
+  transform: translateX(-0.08em);
+}
+
+.primary-nav .about-link {
+  margin-top: 2em;
+  color: #ffff00;
+  font-family: "Fragment Mono", ui-monospace, monospace;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.primary-nav .about-link:hover,
+.primary-nav .about-link:focus-visible {
+  color: var(--accent-color);
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  transform: none;
+}
+
+.frame-footer {
+  position: absolute;
+  right: 0;
+  bottom: -1.5em;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  max-width: calc(100% - 1rem);
+  color: var(--neutral-color);
+  font-size: 1rem;
+  line-height: 1.25rem;
+  white-space: nowrap;
+  transition: color 0.9s ease-in-out;
+}
+
+.frame-footer img {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  margin: 0 0.5rem;
+  object-fit: contain;
+}
+
+.heart-link {
+  margin-left: 0.25rem;
+}
+
+.slide-top {
+  animation: slide-top 0.6s ease-in-out both;
+  animation-delay: var(--delay);
+}
+
+@keyframes twinkle {
+  25% {
+    opacity: 0;
+  }
+}
+
+@keyframes waving {
+  from {
+    transform: translate(10%) rotate(60deg);
+  }
+
+  to {
+    transform: translate(-10%, 10%) rotate(0deg);
+  }
+}
+
+@keyframes blinking {
+  0%,
+  50% {
+    opacity: 0;
+  }
+
+  51%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-top {
+  from {
+    opacity: 0;
+    transform: translateY(5em);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .frame {
+    width: calc(100dvw - 2rem);
+    min-height: calc(100dvh - 2rem);
+    margin: 1rem;
+    padding: 0.75rem;
+  }
+
+  .stars-wrapper {
+    top: -1.875rem;
+    left: -1.875rem;
+  }
+
+  .intro h1 {
+    margin: 1rem 0.75rem;
+    font-size: 2rem;
+  }
+
+  .name-line {
+    margin-left: 1.25rem;
+    font-size: clamp(1.15rem, 6vw, 1.5rem);
+  }
+
+  .role-line,
+  .description-line {
+    margin-left: 1.75rem;
+    font-size: clamp(0.95rem, 4.4vw, 1.25rem);
+  }
+
+  .primary-nav {
+    right: 0.75rem;
+    bottom: 0.75rem;
+  }
+
+  .primary-nav a {
+    font-size: clamp(2rem, 12vw, 3rem);
+  }
+
+  .frame-footer {
+    right: 0;
+    bottom: -1.8em;
+    font-size: 0.7rem;
+  }
+
+  .frame-footer img {
+    width: 0.9rem;
+    height: 0.9rem;
+    margin-inline: 0.3rem;
+  }
+}
+
+/* Reference-accurate overrides based on the original page source. */
+html {
+  min-width: 0;
+  line-height: 1.5;
+  tab-size: 4;
+  overflow: hidden;
+}
+
+body {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background-color: var(--base-color);
+  transition: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+button {
+  color: inherit;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.frame {
+  position: absolute;
+  width: calc(100dvw - 3.5rem);
+  min-height: calc(100dvh - 3.5rem);
+  margin: 1.75rem;
+  padding: 1rem;
+  border: 2px solid var(--accent-color);
+  border-radius: 1rem;
+  isolation: auto;
+  transition: none;
+}
+
+.stars-wrapper {
+  position: absolute;
+  z-index: -1;
+  top: auto;
+  left: auto;
+  width: calc(100dvw - 0.5rem);
+  height: calc(100dvh - 0.5rem);
+  max-width: 100vw;
+  max-height: 100vh;
+  margin-top: -2.625rem;
+  margin-left: -2.625rem;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--base-color);
+  transition: background-color 0.8s ease-in-out;
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+.stars:nth-child(2) {
+  animation-delay: -1.32s;
+}
+
+.stars:nth-child(3) {
+  animation-delay: -2.64s;
+}
+
+.stars .star {
+  position: static;
+  display: initial;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  fill: var(--neutral-color);
+  opacity: 1;
+  transition: none;
+}
+
+.stars .star:nth-child(3n) {
+  opacity: 0.8;
+}
+
+.stars .star:nth-child(7n) {
+  opacity: 0.6;
+}
+
+.stars .star:nth-child(13n) {
+  opacity: 0.4;
+}
+
+.stars .star:nth-child(19n) {
+  opacity: 0.2;
+}
+
+.extras {
+  width: 100%;
+  height: 100%;
+}
+
+.comet {
+  transform-origin: 50%;
+  animation: 10s linear infinite comet;
+}
+
+.comet-b {
+  animation-delay: -3.3s;
+}
+
+.comet-c {
+  animation-delay: -5s;
+}
+
+.theme-switcher {
+  position: absolute;
+  z-index: auto;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  height: 1.25em;
+  padding: 0;
+  border: 0;
+  color: var(--neutral-color);
+  cursor: pointer;
+  transform: none;
+  transform-origin: 50% 50%;
+  translate: none;
+  rotate: 0deg;
+  background: transparent;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  animation: 0.5s fade-in;
+  transition: none;
+}
+
+.theme-switcher:hover,
+.theme-switcher:focus-visible {
+  color: var(--accent-color);
+}
+
+.theme-switcher:focus-visible {
+  outline: auto;
+  outline-offset: 0;
+}
+
+.theme-icon {
+  display: block;
+  flex: 0 0 auto;
+  width: 1em;
+  height: 1em;
+  margin: 0;
+  fill: var(--neutral-color);
+  transition: fill 0.9s ease-in-out;
+}
+
+.intro {
+  position: static;
+  z-index: auto;
+  display: contents;
+  max-width: none;
+}
+
+.intro h1 {
+  display: inline-block;
+  margin: 1.5rem;
+  font-size: 2.25rem;
+  font-weight: inherit;
+  line-height: 2.5rem;
+}
+
+.intro p {
+  overflow-wrap: normal;
+}
+
+.name-line {
+  display: block;
+  margin: 0 0 1.5rem 2.5rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.role-line,
+.description-line {
+  display: block;
+  max-width: none;
+  margin: 0 0 0 4rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.dotted-link {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: underline dotted var(--neutral-color) 0.1em;
+  text-underline-offset: 0.2em;
+  transition:
+    text-underline-offset 0.6s,
+    text-decoration 0.6s,
+    color 0.6s;
+}
+
+.dotted-link:hover {
+  color: var(--accent-color);
+  text-decoration: underline solid var(--accent-color) 0.1em;
+  text-underline-offset: 0.3em;
+}
+
+.dotted-link:focus-visible {
+  color: inherit;
+  text-decoration: underline dotted var(--neutral-color) 0.1em;
+  text-underline-offset: 0.2em;
+  outline: auto;
+  outline-offset: 0;
+}
+
+.name-group {
+  position: static;
+}
+
+.wave {
+  position: static;
+  display: none;
+  visibility: visible;
+  white-space: normal;
+  transform: none;
+}
+
+.name-group:hover .wave,
+.name-group:focus-within .wave {
+  display: inline-block;
+  visibility: visible;
+  animation: 0.3s linear infinite alternate waving;
+}
+
+.blink-cursor {
+  position: relative;
+  top: auto;
+  display: inline-block;
+  width: 0.5em;
+  height: 1.25rem;
+  fill: var(--neutral-color);
+  animation: 1.5s step-end infinite blinking;
+  transition: none;
+}
+
+.primary-nav {
+  position: absolute;
+  right: auto;
+  left: 0;
+  bottom: 2.5rem;
+  z-index: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem;
+  font-family: "Alfa Slab One", cursive;
+}
+
+.primary-nav a {
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-decoration: none;
+  transform: none;
+  transition: none;
+}
+
+.primary-nav .nav-link {
+  margin-bottom: 0.2em;
+  color: var(--neutral-color);
+  font-size: clamp(2rem, 4dvw, 4rem);
+  line-height: 1;
+  text-decoration-color: var(--neutral-color);
+  transition: color 0.5s ease-in-out;
+}
+
+.primary-nav .nav-link:hover {
+  color: var(--accent-color);
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.3em;
+  text-decoration-skip-ink: none;
+  text-underline-offset: -0.2em;
+  transform: none;
+}
+
+.primary-nav .nav-link:focus-visible {
+  color: var(--neutral-color);
+  text-decoration: none;
+  transform: none;
+  outline: auto;
+  outline-offset: 0;
+}
+
+.primary-nav .about-link {
+  margin: 2em 0 0;
+  color: yellow;
+  font-family: "Fragment Mono", monospace;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-decoration: none;
+  transform: none;
+  transition: none;
+}
+
+.primary-nav .about-link:hover,
+.primary-nav .about-link:focus-visible {
+  color: yellow;
+  text-decoration: none;
+  text-underline-offset: auto;
+  transform: none;
+}
+
+/* Keep the remaining introduction copy available for later, but hidden for now. */
+.intro h1,
+.role-line,
+.description-line,
+.name-group .wave {
+  display: none;
+}
+
+.name-line {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  margin: 0;
+}
+
+.intro.is-page-open .name-line {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+}
+
+.primary-nav.is-page-open {
+  position: fixed;
+  top: 1.75rem;
+  right: auto;
+  bottom: auto;
+  left: 1.75rem;
+  z-index: 5;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  animation: page-nav-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.primary-nav.is-page-open.is-returning {
+  pointer-events: none;
+  animation: none;
+}
+
+.primary-nav.is-page-open.is-returning .page-back {
+  animation: page-back-fade-out 0.35s ease both;
+}
+
+.primary-nav.is-page-open.is-returning .nav-link.is-selected {
+  animation: page-title-fade-left 0.35s ease both;
+}
+
+.primary-nav.is-home-restoring {
+  animation: none !important;
+}
+
+.page-back {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  color: var(--neutral-color);
+  cursor: pointer;
+  font-size: 0;
+  opacity: 0;
+  background: transparent;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.page-back::before {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-bottom: 1.5px solid currentColor;
+  border-left: 1.5px solid currentColor;
+  content: "";
+  transform: translateX(0.12rem) rotate(45deg);
+}
+
+.primary-nav.is-page-open .page-back {
+  display: inline-flex;
+  animation: page-back-appear 0.35s 0.8s ease both;
+}
+
+.page-back:hover,
+.page-back:focus-visible {
+  color: var(--accent-color);
+  border-color: currentColor;
+}
+
+.return-title-ghost {
+  position: fixed !important;
+  z-index: 20 !important;
+  margin: 0 !important;
+  pointer-events: none !important;
+  animation: return-title-ghost-fade 0.35s ease both !important;
+}
+
+.return-arrow-ghost {
+  position: fixed !important;
+  z-index: 20 !important;
+  display: inline-flex !important;
+  margin: 0 !important;
+  pointer-events: none !important;
+  opacity: 1 !important;
+  animation: page-back-fade-out 0.35s ease both !important;
+}
+
+.primary-nav.is-home-restoring .nav-link {
+  opacity: 0;
+  animation: none !important;
+}
+
+.primary-nav.is-page-open .nav-link:not(.is-selected) {
+  display: none;
+}
+
+.primary-nav.is-page-open .nav-link.is-selected {
+  display: block;
+  margin: 0;
+}
+
+.page-view {
+  position: absolute;
+  inset: 6.5rem 2rem 2rem;
+  z-index: 1;
+  overflow: auto;
+  color: var(--neutral-color);
+  opacity: 0;
+  animation: page-view-enter 0.6s 0.65s ease both;
+}
+
+.page-view-title {
+  margin: 0;
+  color: var(--neutral-color);
+  font-family: "Alfa Slab One", cursive;
+  font-size: clamp(2rem, 5dvw, 4rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.download-page {
+  width: 100%;
+  max-width: none;
+  padding-top: 1rem;
+}
+
+.download-list {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.download-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.download-info {
+  min-width: 0;
+}
+
+.download-item-title {
+  margin: 0;
+  color: var(--neutral-color);
+  font-family: "Alfa Slab One", cursive;
+  font-size: clamp(2rem, 5dvw, 4rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.download-page-copy {
+  margin: 1.25rem 0 1.5rem;
+  color: var(--neutral-color);
+  font-size: 1rem;
+}
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--neutral-color);
+  color: var(--neutral-color);
+  font-family: "Fragment Mono", monospace;
+  font-size: 0.95rem;
+  margin-right: clamp(5rem, 10vw, 7rem);
+  transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+}
+
+@media (max-width: 600px) {
+  .download-layout {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .download-layout .page-view-title {
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+  }
+
+  .download-item-title {
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+  }
+
+  .download-button {
+    margin-right: 0;
+  }
+}
+
+.download-button:hover,
+.download-button:focus-visible {
+  border-color: var(--accent-color);
+  color: var(--base-color);
+  background-color: var(--accent-color);
+}
+
+@keyframes page-nav-rise {
+  from {
+    opacity: 0;
+    transform: translateY(calc(100dvh - 8rem));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes page-nav-fall {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0.9;
+    transform: translateY(calc(100dvh - 8rem));
+  }
+}
+
+@keyframes page-title-fade-left {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(-1.25rem);
+  }
+}
+
+@keyframes return-title-ghost-fade {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(-1.25rem);
+  }
+}
+
+@keyframes home-menu-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes home-menu-link-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes page-view-enter {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes page-back-appear {
+  from {
+    opacity: 0;
+    transform: translateX(-0.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes page-back-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.frame-footer {
+  position: absolute;
+  right: 0;
+  bottom: -1.5em;
+  z-index: auto;
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  max-width: none;
+  color: inherit;
+  font-size: inherit;
+  line-height: 1.25rem;
+  white-space: nowrap;
+  transition: none;
+}
+
+.frame-footer img {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  margin: 0 0.5rem;
+  object-fit: fill;
+}
+
+.frame-footer a:focus-visible {
+  outline: auto;
+  outline-offset: 0;
+}
+
+.heart-link {
+  margin-left: 0.25rem;
+}
+
+.slide-top {
+  animation: 0.6s ease-in-out both slide-top;
+  animation-delay: calc(var(--dur) * 0.3s);
+}
+
+.slide-right {
+  animation: 0.6s ease-in-out both slide-right;
+  animation-delay: calc(var(--dur) * 0.2s);
+}
+
+.styled-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 0.3rem;
+  outline: 2px solid var(--accent-color);
+  outline-offset: -0.1rem;
+  background-color: transparent;
+}
+
+.styled-scrollbar::-webkit-scrollbar {
+  width: 0.8em;
+}
+
+@keyframes blinking {
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-right {
+  from {
+    opacity: 0;
+    transform: translate(-3em);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes comet {
+  0%,
+  40% {
+    opacity: 0;
+    transform: translate(0);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  60%,
+  100% {
+    opacity: 0;
+    transform: translate(-100vmax);
+  }
+}
