@@ -1,6 +1,10 @@
 downloads/*.exe
+.vercel/
 .DS_Store
 Thumbs.db
 .vscode/
 *.log
 *.tmp
+
+.vercel
+.env*
