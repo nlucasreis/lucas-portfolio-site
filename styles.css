@@ -1221,6 +1221,13 @@ button {
   animation-delay: calc(var(--dur) * 0.2s);
 }
 
+/* Keep navigation links in their hit area while preserving page transitions. */
+.primary-nav .slide-right {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 .styled-scrollbar::-webkit-scrollbar-thumb {
   border-radius: 0.3rem;
   outline: 2px solid var(--accent-color);
