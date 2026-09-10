@@ -550,7 +550,7 @@ button {
 .theme-switcher {
   position: absolute;
   z-index: auto;
-  right: 2rem;
+  right: 1.25rem;
   bottom: 0;
   left: auto;
   display: flex;
