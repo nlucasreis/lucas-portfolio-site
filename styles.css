@@ -784,12 +784,14 @@ button {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  translate: -50% 0;
+  transform: translateX(-50%);
+  pointer-events: auto;
   animation: page-nav-rise-centered 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .primary-nav.is-page-open.is-returning {
   pointer-events: none;
+  transform: translateX(-50%);
   animation: none;
 }
 
@@ -1073,12 +1075,12 @@ button {
 @keyframes page-nav-rise-centered {
   from {
     opacity: 0;
-    transform: translateY(calc(100dvh - 8rem));
+    transform: translate(-50%, calc(100dvh - 8rem));
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(-50%, 0);
   }
 }
 
