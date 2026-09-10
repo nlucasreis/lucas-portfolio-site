@@ -891,6 +891,75 @@ button {
   line-height: 1;
 }
 
+.request-page {
+  width: 100%;
+  max-width: 62rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.project-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.project-form-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.project-form-field-wide {
+  grid-column: 1 / -1;
+}
+
+.project-form label {
+  color: var(--neutral-color);
+  font-size: 0.95rem;
+  line-height: 1.25;
+}
+
+.project-form input,
+.project-form textarea,
+.project-form select {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--neutral-color);
+  border-radius: 0;
+  color: var(--neutral-color);
+  background: transparent;
+  font: inherit;
+  line-height: 1.4;
+  outline: none;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.project-form textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.project-form input::placeholder,
+.project-form textarea::placeholder {
+  color: var(--neutral-color);
+  opacity: 0.65;
+}
+
+.project-form input:focus,
+.project-form textarea:focus,
+.project-form select:focus {
+  border-color: var(--accent-color);
+  background-color: rgb(126 34 206 / 0.08);
+}
+
+.project-form input:focus-visible,
+.project-form textarea:focus-visible,
+.project-form select:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
 .download-page {
   width: 100%;
   max-width: none;
@@ -959,6 +1028,14 @@ button {
 
   .download-button {
     margin-right: 0;
+  }
+
+  .project-form {
+    grid-template-columns: 1fr;
+  }
+
+  .project-form-field-wide {
+    grid-column: auto;
   }
 }
 

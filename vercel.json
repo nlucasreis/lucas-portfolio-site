@@ -1,6 +1,8 @@
 {
   "rewrites": [
     { "source": "/projetos", "destination": "/" },
-    { "source": "/projetos/", "destination": "/" }
+    { "source": "/projetos/", "destination": "/" },
+    { "source": "/solicitar-projeto", "destination": "/" },
+    { "source": "/solicitar-projeto/", "destination": "/" }
   ]
 }

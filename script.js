@@ -202,6 +202,39 @@
         </div>
       `;
       pageView.hidden = false;
+    } else if (link.getAttribute("href") === "/solicitar-projeto/") {
+      pageView.innerHTML = `
+        <div class="request-page">
+          <h1 class="page-view-title">Solicitar Projeto</h1>
+          <form class="project-form">
+            <div class="project-form-field">
+              <label for="project-type">Tipo de projeto</label>
+              <input id="project-type" name="project-type" type="text" placeholder="Ex.: site, sistema ou aplicativo" required />
+            </div>
+            <div class="project-form-field">
+              <label for="project-deadline">Prazo desejado</label>
+              <input id="project-deadline" name="project-deadline" type="date" />
+            </div>
+            <div class="project-form-field project-form-field-wide">
+              <label for="project-description">Descrição</label>
+              <textarea id="project-description" name="project-description" rows="5" placeholder="Conte o que você precisa e quais objetivos o projeto deve atender." required></textarea>
+            </div>
+            <div class="project-form-field">
+              <label for="project-references">Referências</label>
+              <input id="project-references" name="project-references" type="text" placeholder="Links ou exemplos visuais" />
+            </div>
+            <div class="project-form-field">
+              <label for="project-budget">Orçamento estimado</label>
+              <input id="project-budget" name="project-budget" type="text" inputmode="decimal" placeholder="Ex.: R$ 5.000" />
+            </div>
+            <div class="project-form-field project-form-field-wide">
+              <label for="project-contact">Contato</label>
+              <input id="project-contact" name="project-contact" type="text" placeholder="E-mail, WhatsApp ou outro canal" required />
+            </div>
+          </form>
+        </div>
+      `;
+      pageView.hidden = false;
     } else {
       pageView.innerHTML = "";
       pageView.hidden = true;
@@ -237,10 +270,17 @@
     return pathname === "/projetos" || pathname === "/projetos/";
   }
 
+  function isRequestPath(pathname) {
+    return pathname === "/solicitar-projeto" || pathname === "/solicitar-projeto/";
+  }
+
   function syncRoute() {
-    if (isProjectsPath(window.location.pathname)) {
+    if (isProjectsPath(window.location.pathname) || isRequestPath(window.location.pathname)) {
+      const targetPath = isProjectsPath(window.location.pathname)
+        ? "/projetos/"
+        : "/solicitar-projeto/";
       const projectsLink = navLinks.find(
-        (link) => link.getAttribute("href") === "/projetos/",
+        (link) => link.getAttribute("href") === targetPath,
       );
       if (projectsLink) {
         showPage(projectsLink, false);
