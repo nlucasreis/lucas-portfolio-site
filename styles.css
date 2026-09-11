@@ -792,7 +792,7 @@ button {
   margin-inline: auto;
   transform: none;
   pointer-events: auto;
-  animation: page-nav-rise-centered 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: page-nav-open 0.55s ease both;
 }
 
 .primary-nav.is-page-open.is-returning {
@@ -887,6 +887,10 @@ button {
 .primary-nav.is-page-open .nav-link.is-selected {
   display: block;
   margin: 0;
+}
+
+.primary-nav.is-page-open:not(.is-returning) .nav-link.is-selected {
+  animation: page-title-fade-in 0.55s ease both;
 }
 
 .page-view {
@@ -1132,6 +1136,26 @@ button {
   to {
     opacity: 1;
     top: 1.75rem;
+  }
+}
+
+@keyframes page-nav-open {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes page-title-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 
