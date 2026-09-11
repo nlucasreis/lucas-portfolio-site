@@ -1115,30 +1115,6 @@ button {
   background-color: var(--accent-color);
 }
 
-@keyframes page-nav-rise {
-  from {
-    opacity: 0;
-    transform: translateY(calc(100dvh - 8rem));
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes page-nav-rise-centered {
-  from {
-    opacity: 0;
-    top: calc(100dvh - 8rem);
-  }
-
-  to {
-    opacity: 1;
-    top: 1.75rem;
-  }
-}
-
 @keyframes page-nav-open {
   from {
     opacity: 0;
@@ -1156,18 +1132,6 @@ button {
 
   to {
     opacity: 1;
-  }
-}
-
-@keyframes page-nav-fall {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  to {
-    opacity: 0.9;
-    transform: translateY(calc(100dvh - 8rem));
   }
 }
 
